@@ -110,6 +110,18 @@ difference:
         jne     .L10                      # jump not equal -> .L10
         mov     eax, r12d
         movsx   rdx, eax
+        mov     rax, QWORD PTR [rbp-40]
+        add     rax, rdx
+        movzx   eax, BYTE PTR [rax]
+        movsx   edx, al
+        mov     rax, QWORD PTR [rbp-32]
+        mov     esi, edx
+        mov     rdi, rax
+        call    strchr                    # strchr(buffer, a[i])
+        test    rax, rax
+        jne     .L10
+        mov     eax, r12d
+        movsx   rdx, eax
         mov     rax, QWORD PTR -40[rbp]
         add     rax, rdx
         mov     edx, DWORD PTR -20[rbp]
