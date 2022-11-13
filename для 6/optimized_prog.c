@@ -23,8 +23,8 @@ void* difference(char *a, int n1, char *b, int n2) {
     int current_size = 0;
     register int i asm ("r12"); 
     for (i = 0; i < n1; i++) {
-      if (strchr(b, a[i]) == NULL) {
-          buffer[current_size] = a[i];
+      if (strchr(b, a[i]) == NULL && strchr(boofer, a[i]) == NULL) {
+          boofer[current_size] = a[i];
           ++current_size;
       }
    }
