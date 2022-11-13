@@ -12,10 +12,11 @@ char* fill_from_console(int* n) {
    return a;
 }
 void* print_string(char *a, int n) {
-   for (int i = 0; i < n; i++) {
+   register int i asm ("r12");
+   for (i = 0; i < n; i++) {
       printf("%c", a[i]);
    }
-    printf("\n");
+   printf("\n");
 }
 void* difference(char *a, int n1, char *b, int n2) {
     char *buffer = (char*)malloc((n1) * sizeof(char)); 
