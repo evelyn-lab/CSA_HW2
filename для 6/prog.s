@@ -1,3 +1,6 @@
+.intel_syntax noprefix
+.text
+.section .rodata
 .LC0:
         .string "%d "
 .LC1:
