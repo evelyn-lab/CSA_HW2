@@ -2,7 +2,7 @@
 .text
 .section .rodata
 .LC0:
-        .string "%d "
+        .string "%d "                   # строка "%d"
 .LC1:
         .string "%c"
 fill_from_console:
