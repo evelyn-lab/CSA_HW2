@@ -2,25 +2,25 @@
 .text
 .section .rodata
 .LC0:
-        .string "%d "                   # строка "%d"
+        .string "%d "                    # строка "%d"
 .LC1:
-        .string "%c"
+        .string "%c"                     # строка "%c"
 fill_from_console:
-        push    rbp
-        mov     rbp, rsp
+        push    rbp                      # сохраняем rbp на стек
+        mov     rbp, rsp                 # присваиваем rbp rsp
         push    r12
-        sub     rsp, 40
-        mov     QWORD PTR [rbp-40], rdi
-        mov     rax, QWORD PTR [rbp-40]
+        sub     rsp, 40                  # rsp двигаем на 40 байт
+        mov     QWORD PTR -40[rbp], rdi  # 
+        mov     rax, QWORD PTR -40[rbp]  #
         mov     rsi, rax
         mov     edi, OFFSET FLAT:.LC0
         mov     eax, 0
-        call    __isoc99_scanf
+        call    __isoc99_scanf            # scanf("%c", &a[i]);
         mov     rax, QWORD PTR [rbp-40]
         mov     eax, DWORD PTR [rax]
         cdqe
         mov     rdi, rax
-        call    malloc
+        call    malloc                    # вызов malloc
         mov     QWORD PTR [rbp-24], rax
         mov     r12d, 0
         jmp     .L2
